@@ -14,7 +14,7 @@ def process(file)-> Image.Image:
     return image
 
 def predict(image: Image.Image):
-    loaded_model = tf.keras.models.load_model('mvp_model.h5')
+    loaded_model = tf.keras.models.load_model('https://storage.googleapis.com/asset_mushroom/mvp_model.h5')
     image = tf.image.resize(np.array(image), (224,224))
     image = Image.fromarray(np.uint8(image.numpy()))
     image = image.convert("RGB")
