@@ -1,19 +1,19 @@
 FROM python:3.10.8
 
-WORKDIR /app
-
-COPY requirements.txt requirements.txt
-
-RUN pip install -r requirements.txt
-
-#COPY mvp_model.h5 mvp_model.h5
-
-COPY main.py main.py
-
-ENV PYTHONUNBUFFERED=1 
-
+ENV PORT 8000
 ENV HOST 0.0.0.0
 
 EXPOSE 8000
 
-CMD [ "python", "main.py" ]
+RUN apt-get update -y && \
+    apt-get install -y python3-pip
+
+COPY ./requirements.txt /app/requirements.txt
+
+WORKDIR /app
+
+RUN pip install -r requirements.txt
+
+COPY . /app
+
+ENTRYPOINT ["python", "main.py"]
