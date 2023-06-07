@@ -6,7 +6,7 @@ COPY requirements.txt requirements.txt
 
 RUN pip install -r requirements.txt
 
-COPY mvp_model.h5 mvp_model.h5
+#COPY mvp_model.h5 mvp_model.h5
 
 COPY main.py main.py
 
